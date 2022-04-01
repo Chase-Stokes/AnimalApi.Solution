@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AnimalApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace AnimalApi.Controllers
 {
@@ -18,7 +19,7 @@ namespace AnimalApi.Controllers
     {
       _db = db;
     }
-
+    [EnableCors("Policy1")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Park>>> Get(string state, string name )
     {
@@ -35,6 +36,7 @@ namespace AnimalApi.Controllers
       }  
       return await query.ToListAsync();
     }
+    [EnableCors("Policy2")]
     [HttpPost]
     public async Task<ActionResult<Park>> Post(Park park)
     {
@@ -43,7 +45,7 @@ namespace AnimalApi.Controllers
       return CreatedAtAction(nameof(GetPark), new { id = park.ParkId }, park);
     }
 
-
+    [EnableCors("Policy1")]
     [HttpGet("{id}")]
     public async Task<ActionResult<Animal>> GetPark(int id)
     {
@@ -55,7 +57,7 @@ namespace AnimalApi.Controllers
       }
       return park;
     }
-
+    [EnableCors("Policy2")]
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Park park)
     {
@@ -86,7 +88,7 @@ namespace AnimalApi.Controllers
     {
       return _db.Parks.Any(e => e.ParkId == id);
     }
-
+    [EnableCors("Policy2")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePark(int id)
     {
