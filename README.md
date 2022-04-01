@@ -67,7 +67,7 @@ _**In order to access a usable version of the sql database you will need to do t
 
 _**You can explore the API endpoints in postman**_
 
-_**You can view all of the endpoints with swagger, by using ```dotnet run``` in your terminal, and input ```https://localhost:5001/swagger/index.html```**_
+_**You can view all of the endpoints with swagger, by using ```dotnet run``` in your terminal, and input ```https://localhost:5001/swagger/index.html``` into your browser**_
 
 _**Endpoints**_
 
@@ -126,11 +126,14 @@ _**Sample Reponse of Query**_
     }
 ]
 ```
+_**Note on CORS**_
 
+_CORS is a W3C standard that allows a server to relax the same-origin policy. It is not a security feature, CORS relaxes security. It allows a server to explicitly allow some cross-origin requests while rejecting others. An API is not safer by allowing CORS. For more information or to see how CORS functions, see the Microsoft documentation._
 
 ## Known Bugs
 
 * _No known bugs_
+* _Unknown if CORS is working correctly_
 
 ## License - [MIT](https://opensource.org/licenses/MIT)
 
